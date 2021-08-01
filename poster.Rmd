@@ -1,7 +1,8 @@
 ---
 params:
   number: "#1"
-  date: 'Vendredi 6 Août 2021 à 19 h 30'
+  date: "Vendredi 6 Août 2021 à 19 h 30"
+  event: "https://fb.me/e/2BEUnTzJG"
 title: '<img src="https://raw.githubusercontent.com/mcanouil/hex-stickers/main/SVG/mcsb.svg" width = "200px" style="margin-bottom:-50px;opacity:0.75;"/></br>Game Night `r params[["number"]]`'
 author: "Mickaël C. -- Les Sorties Lilloises (LSL)"
 subtitle: '`r params[["date"]]`'
@@ -97,4 +98,11 @@ participant.
 3. Vous ne devez pas tenir des propos ou avoir des comportements harcelants, abusifs,
 discriminatoires ou menaçants.
 4. Vous devez vous conformer aux consignes de l'organisateur de l'événement.
-5. Vous devez vous conformer à l'ensemble des lois et règlements applicables
+5. Vous devez vous conformer à l'ensemble des lois et règlements applicables.
+
+---
+class: center middle inverse lettrine
+
+# S'Inscrire
+
+`r params[["event"]]`

@@ -10,7 +10,7 @@ library(magick)
 
 posters <- setdiff(sub("\\.R$", "", dir("R", pattern = "\\.R$")), "social")
 rscript <- paste0("R/", posters, ".R")
-png <- paste0("posters/", posters, ".png")
+png <- paste0("posters/", posters, "_01.png")
 thumb <- paste0("thumbs/", posters, ".png")
 
 resize <- function(path_in, path_out) {

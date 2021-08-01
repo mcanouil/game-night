@@ -38,6 +38,13 @@
   padding: 5pt;
 }
 
+a, a > code {
+  color: #b22222;
+  text-decoration: none;
+  text-shadow: 0 0 20px #EEB422;
+  font-size: 200%;
+}
+
 .title-slide .remark-slide-number {
   display: none;
 }
