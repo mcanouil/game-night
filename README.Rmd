@@ -1,0 +1,45 @@
+---
+output: github_document
+---
+
+# Game Night Poster
+
+```{r, echo = FALSE, message = FALSE}
+source("R/social.R")
+library(magick)
+
+posters <- setdiff(sub("\\.R$", "", dir("R", pattern = "\\.R$")), "social")
+rscript <- paste0("R/", posters, ".R")
+png <- paste0("posters/", posters, ".png")
+thumb <- paste0("thumbs/", posters, ".png")
+
+resize <- function(path_in, path_out) {
+  image <- image_read(path_in)
+  image <- image_resize(image, "384x")
+  image_write(image, path_out)
+}
+
+outdated <- !file.exists(png) | 
+  file.mtime(png) < file.mtime(rscript) | 
+  file.mtime(rscript) < file.mtime("R/social.R")
+invisible(lapply(rscript[outdated], source, encoding = "UTF-8"))
+
+poutdated <- !file.exists(thumb) | file.mtime(thumb) < file.mtime(png)
+invisible(Map(resize, png[outdated], thumb[outdated]))
+```
+
+```{r, results = "asis", echo = FALSE}
+img <- glue::glue('<img alt="Poster for {posters} Meetup" src="{thumb}" width="384" height="216">')
+png_link <- glue::glue('<a href="{png}">{posters}.png</a>')
+cell <- paste0('<td align = "center">', img, "<br />", png_link, "</td>")
+
+cols <- 2
+rows <- ceiling(length(cell) / cols)
+
+row_id <- rep(seq_len(rows), each = cols, length.out = length(cell))
+row_cells <- split(cell, row_id)
+
+cat("<table>\n")
+cat(paste0("<tr>", sapply(row_cells, paste, collapse = ""), "</tr>"), sep = "")
+cat("</table>\n")
+```
