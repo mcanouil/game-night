@@ -29,7 +29,7 @@ invisible(Map(resize, png[outdated], thumb[outdated]))
 ```
 
 ```{r, results = "asis", echo = FALSE}
-img <- glue::glue('<img alt="Poster for {posters} Meetup" src="{thumb}" width="384" height="216">')
+img <- glue::glue('<img alt="Poster for {posters} game night" src="{thumb}" width="384" height="216">')
 png_link <- glue::glue('<a href="{png}">{posters}.png</a>')
 cell <- paste0('<td align = "center">', img, "<br />", png_link, "</td>")
 
