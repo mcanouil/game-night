@@ -9,9 +9,9 @@ source("assets/social.R")
 library(magick)
 
 posters <- sub("\\.R$", "", dir("R", pattern = "\\.R$"))
-rscript <- paste0("R/", posters, ".R")
-png <- paste0("posters/", posters, "_01.png")
-thumb <- paste0("thumbs/", posters, ".png")
+rscript <- sprintf("R/%s.R", posters)
+png <- sprintf("posters/%s/%s_01.png", posters, posters)
+thumb <- sprintf("thumbs/%s.png", posters)
 
 resize <- function(path_in, path_out) {
   image <- image_read(path_in)
@@ -24,7 +24,7 @@ outdated <- !file.exists(png) |
   file.mtime(rscript) < file.mtime("assets/social.R")
 invisible(lapply(rscript[outdated], source, encoding = "UTF-8"))
 
-poutdated <- !file.exists(thumb) | file.mtime(thumb) < file.mtime(png)
+outdated <- !file.exists(thumb) | file.mtime(thumb) < file.mtime(png)
 invisible(Map(resize, png[outdated], thumb[outdated]))
 ```
 
