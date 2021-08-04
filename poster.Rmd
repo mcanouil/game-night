@@ -107,7 +107,3 @@ class: center middle inverse lettrine
 # S'Inscrire
 
 `r params[["event"]]`
-
-<img src="./assets/lemon-pie.jpg" alt="Lemon Pie" style="width:20%;">
-
-.footnote.center[*&ast; Photo non contractuelle*]
