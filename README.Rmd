@@ -39,20 +39,30 @@ combine <- function(rscript, pattern = "OVS|LSL") {
       FUN = magick::image_read
     ))
     
-    magick::image_write(
+    # output_image <- magick::image_append(
+    #   c(
+    #     magick::image_scale(images[1], "1280x720"),
+    #     magick::image_scale(magick::image_append(
+    #       image = c(
+    #         magick::image_append(images[2:3], stack = FALSE),
+    #         magick::image_append(images[4:5], stack = FALSE)
+    #       ), 
+    #       stack = TRUE
+    #     ), "1280x720")
+    #   ),
+    #   stack = TRUE
+    # )
+    
+    output_image <- magick::image_scale(
       image = magick::image_append(
-        c(
-          magick::image_scale(images[1], "1280x720"),
-          magick::image_scale(magick::image_append(
-            image = c(
-              magick::image_append(images[2:3], stack = FALSE),
-              magick::image_append(images[4:5], stack = FALSE)
-            ), 
-            stack = TRUE
-          ), "1280x720")
-        ),
+        image = images[1:5],
         stack = TRUE
       ), 
+      geometry = "720x"
+    )
+
+    magick::image_write(
+      image = output_image, 
       path = sprintf("posters/%s/%s.png", basename(poster), basename(poster))
     )
   }))
