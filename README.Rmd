@@ -10,7 +10,7 @@ library(magick)
 
 posters <- sub("\\.R$", "", dir("R", pattern = "\\.R$"))
 rscript <- sprintf("R/%s.R", posters)
-png <- sprintf("posters/%s/%s_01.png", posters, posters)
+png <- sprintf("posters/%s/%s.png", posters, posters)
 thumb <- sprintf("thumbs/%s.png", posters)
 
 resize <- function(path_in, path_out) {
@@ -24,13 +24,48 @@ outdated <- !file.exists(png) |
   file.mtime(rscript) < file.mtime("assets/social.R")
 invisible(lapply(rscript[outdated], source, encoding = "UTF-8"))
 
+combine <- function(rscript, pattern = "OVS|LSL") {
+  posters <- sub("\\.R$", "", unlist(lapply(
+    X = rscript,
+    FUN = function(x) if (any(grepl(pattern, readLines(con = x)))) x
+  )))
+  invisible(lapply(X = posters, function(poster) {
+    images <- do.call("c", lapply(
+      X = sort(list.files(
+        path = sprintf("posters/%s", basename(poster)), 
+        pattern = "_.*\\.png$", 
+        full.names = TRUE
+      )), 
+      FUN = magick::image_read
+    ))
+    
+    magick::image_write(
+      image = magick::image_append(
+        c(
+          magick::image_scale(images[1], "1280x720"),
+          magick::image_scale(magick::image_append(
+            image = c(
+              magick::image_append(images[2:3], stack = FALSE),
+              magick::image_append(images[4:5], stack = FALSE)
+            ), 
+            stack = TRUE
+          ), "1280x720")
+        ),
+        stack = TRUE
+      ), 
+      path = sprintf("posters/%s/%s.png", basename(poster), basename(poster))
+    )
+  }))
+}
+combine(rscript[outdated])
+
 outdated <- !file.exists(thumb) | file.mtime(thumb) < file.mtime(png)
-invisible(Map(resize, png[outdated], thumb[outdated]))
+invisible(Map(resize, sub("\\.png", "_01.png", png)[outdated], thumb[outdated]))
 ```
 
 ```{r, results = "asis", echo = FALSE}
-img <- glue::glue('<img alt="Poster for {posters} game night" src="{thumb}" width="384" height="216">')
-png_link <- glue::glue('<a href="{png}">{posters}.png</a>')
+img <- glue::glue('<img alt="Poster for {posters} game night" src="{thumb}" width="384" height="216" />')
+png_link <- glue::glue('<a href="{dirname(png)}">{posters}</a>')
 cell <- paste0('<td align = "center">', img, "<br />", png_link, "</td>")
 
 cols <- 2
