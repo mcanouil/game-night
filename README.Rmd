@@ -5,10 +5,10 @@ output: github_document
 # Game Night Poster
 
 ```{r, echo = FALSE, message = FALSE}
-source("R/social.R")
+source("assets/social.R")
 library(magick)
 
-posters <- setdiff(sub("\\.R$", "", dir("R", pattern = "\\.R$")), "social")
+posters <- sub("\\.R$", "", dir("R", pattern = "\\.R$"))
 rscript <- paste0("R/", posters, ".R")
 png <- paste0("posters/", posters, "_01.png")
 thumb <- paste0("thumbs/", posters, ".png")
@@ -21,7 +21,7 @@ resize <- function(path_in, path_out) {
 
 outdated <- !file.exists(png) | 
   file.mtime(png) < file.mtime(rscript) | 
-  file.mtime(rscript) < file.mtime("R/social.R")
+  file.mtime(rscript) < file.mtime("assets/social.R")
 invisible(lapply(rscript[outdated], source, encoding = "UTF-8"))
 
 poutdated <- !file.exists(thumb) | file.mtime(thumb) < file.mtime(png)

@@ -1,10 +1,11 @@
 ---
 params:
-  number: "#1"
+  title: "<h1 style = 'font-size:100px;'>C'Est L'Histoire D'Un-e Nain-e ...</br>#27<h1>"
   date: "Vendredi 6 Août 2021 à 19 h 30"
-  event: "https://fb.me/e/2BEUnTzJG"
-title: '<img src="https://raw.githubusercontent.com/mcanouil/hex-stickers/main/SVG/mcsb.svg" width = "200px" style="margin-bottom:-50px;opacity:0.75;"/></br>Game Night `r params[["number"]]`'
-author: "Mickaël C. -- Les Sorties Lilloises (LSL)"
+  event: "ddd"
+  group: "On Va Sortir (OVS)"
+title: "<img src='https://raw.githubusercontent.com/mcanouil/hex-stickers/main/SVG/mcsb.svg' width = '200px' style='margin-bottom:-50px;opacity:0.75;'/></br>`r params[['title']]`"
+author: 'Mickaël C. -- `r params[["group"]]`'
 subtitle: '`r params[["date"]]`'
 output:
   xaringan::moon_reader:
@@ -30,12 +31,12 @@ options(htmltools.dir.version = FALSE)
 
 
 ```{css, echo = FALSE}
-.l {
+.l20 {
   float: left;
   width: 20%;
 }
 
-.r {
+.r80 {
   float: right;
   width: 80%;
 }
@@ -45,11 +46,11 @@ options(htmltools.dir.version = FALSE)
 
 Salutations à vous, vous qui vous êtes égaré-e-s ici et pas ailleurs !
 
-.l[
+.l20[
 <img src = "https://avatars.githubusercontent.com/u/8896044" height = "175px" id = "picture" />
 ]
 
-.r[
+.r80[
 
 Il est important de noter et de rappeler que le .red[monde se divise en deux]&ast; :
 
@@ -68,7 +69,7 @@ class: lettrine
 
 Entrons dans le cœur de cet événement, en commençant par les choses importantes.
 
-L'idée est de réunir plusieurs personnes (dans un maximum de huit) autour d'un « .red[potluck] », pour reprendre le terme anglais d'Amérique du Nord (*c.-à-d.*, en bon français un « .red[repas-partagé] »), et ce,  .red[chez moi dans le secteur du Vieux-Lille]&ast; (.red[Rue Esquermoise / Royale]) de .red[19 h 30] à XX h XX.
+L'idée est de réunir plusieurs personnes (dans un maximum de huit) autour d'un « .red[potluck] », pour reprendre le terme anglais d'Amérique du Nord (*c.-à-d.*, en bon français un « .red[repas-partagé] »), et ce, .red[chez moi dans le secteur du Vieux-Lille]&ast; (.red[Rue Esquermoise / Royale]) de .red[19 h 30] à XX h XX.
 
 Dès lors que le stock de victuailles aura atteint une quantité nécessaire et suffisante, il nous sera alors possible de partir dans .red[une (ou plusieurs) « aventure(s) » d'environ 30-45 minutes selon le jeu].
 
@@ -106,3 +107,7 @@ class: center middle inverse lettrine
 # S'Inscrire
 
 `r params[["event"]]`
+
+<img src="./assets/lemon-pie.jpg" alt="Lemon Pie" style="width:20%;">
+
+.footnote.center[*&ast; Photo non contractuelle*]

@@ -10,7 +10,7 @@
 .footnote {
   position: absolute;
   bottom: 0.5em;
-  padding-right: 4em;
+  /*padding-right: 4em;*/
   font-size: 90%;
   color: #b22222;
   text-shadow: 1px 1px 2px #EEB422;

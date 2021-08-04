@@ -1,5 +1,6 @@
 library(chromote)
 library(callr)
+library(rmarkdown)
 
 social <- function(input, output, rmd_params, chrome_path, delay = 1) {
   callr::r(
@@ -85,8 +86,14 @@ social <- function(input, output, rmd_params, chrome_path, delay = 1) {
         if (identical(last_hash, this_hash)) break
         last_hash <- this_hash
 
+        file_name <- file.path(
+          dirname(output),
+          sub("\\..*", "", basename(output)),
+          sub("\\.png", "_%02d.png", basename(output))
+        )
+        dir.create(path = dirname(file_name), showWarnings = FALSE, recursive = TRUE, mode = "0775")
         web_browser$screenshot(
-          filename = sprintf(sub("\\.png", "_%02d.png", output), i),
+          filename = sprintf(file_name, i),
           selector = "div.remark-slide-scaler",
           scale = 2
         )
