@@ -18,4 +18,9 @@
 <img alt="Poster for 2021-08-30 game night" src="thumbs/2021-08-30.png" width="384" height="216" /><br /><a href="posters/2021-08-30">2021-08-30</a>
 </td>
 </tr>
+<tr>
+<td align="center">
+<img alt="Poster for 2021-09-10 game night" src="thumbs/2021-09-10.png" width="384" height="216" /><br /><a href="posters/2021-09-10">2021-09-10</a>
+</td>
+</tr>
 </table>

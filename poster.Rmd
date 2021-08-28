@@ -2,7 +2,6 @@
 params:
   title: "<h1 style = 'font-size:100px;'>C'Est L'Histoire D'Un-e Nain-e ...</br>#27<h1>"
   date: "Vendredi 6 Août 2021 à 19 h 30"
-  event: "ddd"
   group: "On Va Sortir (OVS)"
 title: "<img src='https://raw.githubusercontent.com/mcanouil/hex-stickers/main/SVG/mcsb.svg' width = '200px' style='margin-bottom:-50px;opacity:0.75;'/></br>`r params[['title']]`"
 author: 'Mickaël C. -- `r params[["group"]]`'
@@ -64,7 +63,7 @@ Il est important de noter et de rappeler que le .red[monde se divise en deux]&as
 
 ---
 class: lettrine
- 
+
 # Événement
 
 Entrons dans le cœur de cet événement, en commençant par les choses importantes.
@@ -100,10 +99,3 @@ participant.
 discriminatoires ou menaçants.
 4. Vous devez vous conformer aux consignes de l'organisateur de l'événement.
 5. Vous devez vous conformer à l'ensemble des lois et règlements applicables.
-
----
-class: center middle inverse lettrine
-
-# S'Inscrire
-
-`r params[["event"]]`
