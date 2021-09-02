@@ -6,20 +6,6 @@ params:
 title: "<img src='https://raw.githubusercontent.com/mcanouil/hex-stickers/main/SVG/mcsb.svg' width = '200px' style='margin-bottom:-50px;opacity:0.75;'/></br>`r params[['title']]`"
 author: 'Mickaël C. -- `r params[["group"]]`'
 subtitle: '`r params[["date"]]`'
-output:
-  xaringan::moon_reader:
-    seal: true
-    self_contained: true
-    mathjax: null
-    css: ["default", "assets/default.css", "assets/fonts.css"]
-    includes:
-      in_header: assets/_scripts.html
-    nature:
-      highlightStyle: github
-      highlightLines: true
-      slideNumberFormat: "%current%"
-      ratio: "16:9"
-      countIncrementalSlides: false
 ---
 
 class: lettrine
@@ -27,7 +13,6 @@ class: lettrine
 ```{r setup, include = FALSE}
 options(htmltools.dir.version = FALSE)
 ```
-
 
 ```{css, echo = FALSE}
 .l20 {

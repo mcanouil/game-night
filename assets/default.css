@@ -1,5 +1,7 @@
 :root {
   --logo: url(https://raw.githubusercontent.com/mcanouil/hex-stickers/main/SVG/mcsb.svg);
+  --background: url('background.jpg');
+  --cover: url('cover.jpg');
 }
 
 .red {
@@ -56,7 +58,7 @@ a, a > code {
 }
 
 .remark-slide-content {
-  background-image: url('background.jpg');
+  background-image: var(--background);
   background-size: cover;
   font-size: 32px;
   font-weight: 600;
@@ -69,7 +71,7 @@ h1 {
 }
 
 .title-slide {
-  background-image: url('cover.jpg');
+  background-image: var(--cover);
   background-size: cover;
   color: #EEB422 !important;
   outline: thick double #EEB422BF;

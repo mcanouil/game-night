@@ -2,14 +2,14 @@ library(chromote)
 library(callr)
 library(rmarkdown)
 
-social <- function(input, output, rmd_params, chrome_path, delay = 1) {
+social <- function(input, output, rmd_params, output_yaml = "assets/_output.yaml", chrome_path = NULL, delay = 1) {
   callr::r(
-    func = function(input, output, rmd_params, chrome_path, delay) {
+    func = function(input, output, rmd_params, output_yaml, chrome_path, delay) {
       web_browser <- suppressMessages(try(chromote::ChromoteSession$new(), silent = TRUE))
 
       if (
         inherits(web_browser, "try-error") &&
-        missing(chrome_path) &&
+        is.null(chrome_path) &&
         Sys.info()[["sysname"]] == "Windows"
       ) {
         edge_path <- "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe"
@@ -25,7 +25,8 @@ social <- function(input, output, rmd_params, chrome_path, delay = 1) {
         input = input,
         output_dir = tempdir(),
         encoding = "UTF-8",
-        params = rmd_params
+        params = rmd_params,
+        output_yaml = output_yaml
       )
 
       web_browser$Page$navigate(xaringan_poster, wait_ = FALSE)
@@ -103,6 +104,8 @@ social <- function(input, output, rmd_params, chrome_path, delay = 1) {
       input = input,
       output = output,
       rmd_params = rmd_params,
+      output_yaml = output_yaml,
+      chrome_path = chrome_path,
       delay = delay
     )
   )

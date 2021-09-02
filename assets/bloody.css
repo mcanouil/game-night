@@ -1,0 +1,8 @@
+:root {
+  --background: url(background_bloody.jpg);
+  --cover: url(cover_bloody.jpg);
+}
+
+p, ol {
+  text-shadow: 1px 1px 2px #EEB422;
+}

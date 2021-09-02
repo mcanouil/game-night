@@ -1,0 +1,16 @@
+xaringan::moon_reader:
+  seal: true
+  self_contained: true
+  mathjax: null
+  css: !r
+    - "default"
+    - "assets/default.css"
+    - "assets/fonts.css"
+  includes:
+    in_header: assets/_scripts.html
+  nature:
+    highlightStyle: github
+    highlightLines: true
+    slideNumberFormat: "%current%"
+    ratio: "16:9"
+    countIncrementalSlides: false
