@@ -19,8 +19,8 @@ resize <- function(path_in, path_out) {
   magick::image_write(image, path_out)
 }
 
-outdated <- !file.exists(png) |
-  file.mtime(png) < file.mtime(rscript) |
+outdated <- !file.exists(thumb) |
+  file.mtime(thumb) < file.mtime(rscript) |
   file.mtime(rscript) < file.mtime("assets/social.R")
 
 invisible(lapply(rscript[outdated], source, encoding = "UTF-8"))
@@ -70,9 +70,6 @@ combine <- function(rscript, pattern = "OVS|LSL") {
 }
 combine(rscript[outdated])
 
-outdated <- !file.exists(thumb) | (
-  file.exists(png) & file.mtime(thumb) < file.mtime(png)
-)
 invisible(Map(resize, sub("\\.png", "_01.png", png)[outdated], thumb[outdated]))
 
 unlink(dirname(png)[as.Date(posters) < Sys.Date()], recursive = TRUE)
