@@ -14,9 +14,9 @@ png <- sprintf("posters/%s/%s.png", posters, posters)
 thumb <- sprintf("thumbs/%s.png", posters)
 
 resize <- function(path_in, path_out) {
-  image <- image_read(path_in)
-  image <- image_resize(image, "192x")
-  image_write(image, path_out)
+  image <- magick::image_read(path_in)
+  image <- magick::image_resize(image, "192x")
+  magick::image_write(image, path_out)
 }
 
 outdated <- !file.exists(png) |
