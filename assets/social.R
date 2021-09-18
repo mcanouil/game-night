@@ -31,7 +31,7 @@ social <- function(input, output, rmd_params, output_yaml = "assets/_output.yaml
 
       web_browser$Page$navigate(xaringan_poster, wait_ = FALSE)
       on.exit(web_browser$close(), add = TRUE)
-      web_browser$Page$loadEventFired()
+      if (Sys.info()[["sysname"]] == "Windows") web_browser$Page$loadEventFired()
 
       current_slide <- function() {
         x <- web_browser$Runtime$evaluate("slideshow.getCurrentSlideIndex()")$result$value
