@@ -51,12 +51,6 @@ jobs:
         run: |
           cat("::group::Install dependencies\n")
           options(pak.no_extra_messages = TRUE)
-          if (Sys.info()[["sysname"]] == "Linux") {
-            pak::local_system_requirements(execute = TRUE)
-            for (dep in c("rmarkdown", "xaringan", "magick", "callr", "rstudio/chromote")) {
-              pak::pkg_system_requirements(dep, execute = TRUE)
-            }
-          }
           pak::pkg_install(c("rmarkdown", "xaringan", "magick", "callr", "rstudio/chromote"))
           cat("::endgroup::\n")
         shell: Rscript {0}
