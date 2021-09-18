@@ -53,7 +53,7 @@ jobs:
           options(pak.no_extra_messages = TRUE)
           if (Sys.info()[["sysname"]] == "Linux") {
             pak::local_system_requirements(execute = TRUE)
-            for (dep in c("rmarkdown", "xaringan", "magick", "callr", "rstudio/chromote") {
+            for (dep in c("rmarkdown", "xaringan", "magick", "callr", "rstudio/chromote")) {
               pak::pkg_system_requirements(dep, execute = TRUE)
             }
           }
