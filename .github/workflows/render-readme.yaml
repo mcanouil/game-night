@@ -21,7 +21,7 @@ jobs:
       - uses: r-lib/actions/setup-r@v1
 
       - run: |
-          sudo apt-get update && sudo apt-get install chromium-browser libmagick++-dev
+          sudo apt-get update && sudo apt-get install chromium-browser libmagick++-dev libcurl4-openssl-dev
 
       - name: Install pak and dependencies
         run: |
