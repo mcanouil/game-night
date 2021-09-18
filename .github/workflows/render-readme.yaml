@@ -27,7 +27,7 @@ jobs:
         run: |
           options(pak.no_extra_messages = TRUE)
           install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")
-          pak::pkg_install(c("rmarkdown", "magick", "callr", "rstudio/chromote"))
+          pak::pkg_install(c("rmarkdown", "xaringan", "magick", "callr", "rstudio/chromote"))
         shell: Rscript {0}
 
       - name: Render README.Rmd
