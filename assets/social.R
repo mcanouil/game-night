@@ -74,10 +74,10 @@ social <- function(input, output, rmd_params, output_yaml = "assets/_output.yaml
         }
 
         if (current_slide() == idx_slide) {
-          step <- 0L
+          # step <- 0L
           idx_part <- idx_part + 1L
         } else {
-          step <- 1L
+          # step <- 1L
           idx_part <- 1L
         }
         idx_slide <- current_slide()
