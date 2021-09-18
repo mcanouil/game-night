@@ -23,7 +23,7 @@ jobs:
       - run: |
           sudo apt-get update && sudo apt-get install chromium-browser libmagick++-dev
 
-       - name: Install pak and dependencies
+      - name: Install pak and dependencies
         run: |
           options(pak.no_extra_messages = TRUE)
           install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")
