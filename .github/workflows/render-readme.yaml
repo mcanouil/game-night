@@ -55,15 +55,6 @@ jobs:
           cat("::endgroup::\n")
         shell: Rscript {0}
 
-      - name: Session info
-        run: |
-          cat("::group::Session info\n")
-          options(width = 100)
-          pkgs <- installed.packages()[, "Package"]
-          sessioninfo::session_info(pkgs, include_base = TRUE)
-          cat("::endgroup::\n")
-        shell: Rscript {0}
-
       - name: Don't use tar 1.30 from Rtools35 to store the cache
         shell: bash
         run: |
