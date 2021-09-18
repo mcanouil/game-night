@@ -9,8 +9,6 @@
 <td align="center">
 <img alt="Poster for 2021-08-16 game night" src="thumbs/2021-08-16.png" width="384" height="216" /><br /><a href="posters/2021-08-16">2021-08-16</a>
 </td>
-</tr>
-<tr>
 <td align="center">
 <img alt="Poster for 2021-08-27 game night" src="thumbs/2021-08-27.png" width="384" height="216" /><br /><a href="posters/2021-08-27">2021-08-27</a>
 </td>
@@ -25,10 +23,11 @@
 <td align="center">
 <img alt="Poster for 2021-09-17 game night" src="thumbs/2021-09-17.png" width="384" height="216" /><br /><a href="posters/2021-09-17">2021-09-17</a>
 </td>
-</tr>
-<tr>
 <td align="center">
 <img alt="Poster for 2021-09-20 game night" src="thumbs/2021-09-20.png" width="384" height="216" /><br /><a href="posters/2021-09-20">2021-09-20</a>
+</td>
+<td align="center">
+<img alt="Poster for 2021-09-24 game night" src="thumbs/2021-09-24.png" width="384" height="216" /><br /><a href="posters/2021-09-24">2021-09-24</a>
 </td>
 </tr>
 </table>
