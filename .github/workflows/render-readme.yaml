@@ -25,7 +25,7 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v1
         with:
-          extra-packages: [rmarkdown, magick, callr, chromote]
+          extra-packages: rmarkdown, magick, callr, chromote
 
       - name: Render README.Rmd
         run: Rscript -e 'if (file.exists("README.Rmd")) rmarkdown::render("README.Rmd")'
