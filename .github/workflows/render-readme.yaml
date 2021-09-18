@@ -23,9 +23,12 @@ jobs:
       - run: |
           sudo apt-get update && sudo apt-get install chromium-browser libmagick++-dev
 
-      - uses: r-lib/actions/setup-r-dependencies@v1
-        with:
-          extra-packages: rmarkdown, magick, callr, chromote
+       - name: Install pak and dependencies
+        run: |
+          options(pak.no_extra_messages = TRUE)
+          install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")
+          pak::pkg_install(c("rmarkdown", "magick", "callr", "rstudio/chromote"))
+        shell: Rscript {0}
 
       - name: Render README.Rmd
         run: Rscript -e 'if (file.exists("README.Rmd")) rmarkdown::render("README.Rmd")'
