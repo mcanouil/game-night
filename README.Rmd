@@ -23,10 +23,7 @@ outdated <- !file.exists(png) |
   file.mtime(png) < file.mtime(rscript) |
   file.mtime(rscript) < file.mtime("assets/social.R")
 
-past_posters <- TRUE#as.Date(posters) > Sys.Date()
-unlink(dirname(png)[!past_posters], recursive = TRUE)
-
-invisible(lapply(rscript[past_posters & outdated], source, encoding = "UTF-8"))
+invisible(lapply(rscript[outdated], source, encoding = "UTF-8"))
 
 combine <- function(rscript, pattern = "OVS|LSL") {
   posters <- sub("\\.R$", "", unlist(lapply(
@@ -73,8 +70,12 @@ combine <- function(rscript, pattern = "OVS|LSL") {
 }
 combine(rscript[outdated])
 
-outdated <- !file.exists(thumb) | file.mtime(thumb) < file.mtime(png)
+outdated <- !file.exists(thumb) | (
+  file.exists(png) & file.mtime(thumb) < file.mtime(png)
+)
 invisible(Map(resize, sub("\\.png", "_01.png", png)[outdated], thumb[outdated]))
+
+unlink(dirname(png)[as.Date(posters) < Sys.Date()], recursive = TRUE)
 ```
 
 ```{r, results = "asis", echo = FALSE}
