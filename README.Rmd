@@ -8,8 +8,8 @@ output: github_document
 source("assets/social.R")
 library(magick)
 
-posters <- sub("\\.R$", "", dir("R", pattern = "\\.R$"))
-rscript <- sprintf("R/%s.R", posters)
+rscript <- list.files(path = "R", pattern = "^20.*\\.R$", full.names = TRUE)
+posters <- sub("\\.R$", "", basename(rscript))
 png <- sprintf("posters/%s/%s.png", posters, posters)
 thumb <- sprintf("thumbs/%s.png", posters)
 
