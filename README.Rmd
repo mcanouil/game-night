@@ -7,7 +7,7 @@ output: github_document
 # Game Night Poster
 
 <!-- badges: start -->
-![License](https://img.shields.io/github/license/mcanouil/game-night?style=plastic)
+[![License](https://img.shields.io/github/license/mcanouil/game-night)](LICENSE)
 <!-- badges: end -->
 
 ```{r, echo = FALSE, message = FALSE}

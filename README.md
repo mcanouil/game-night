@@ -1,5 +1,12 @@
 
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
 # Game Night Poster
+
+<!-- badges: start -->
+
+[![License](https://img.shields.io/github/license/mcanouil/game-night)](LICENSE)
+<!-- badges: end -->
 
 <table>
 <tr>
