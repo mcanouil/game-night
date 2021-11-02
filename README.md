@@ -39,7 +39,7 @@
 </tr>
 <tr>
 <td align="center">
-<img alt="Poster for 2021-10-22 game night" src="thumbs/2021-10-22.png" width="192" height="108" /><br /><a href="posters/2021-10-22">2021-10-22</a>
+<img alt="Poster for 2021-11-05 game night" src="thumbs/2021-11-05.png" width="192" height="108" /><br /><a href="posters/2021-11-05">2021-11-05</a>
 </td>
 </tr>
 </table>
