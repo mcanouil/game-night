@@ -33,8 +33,7 @@ invisible(Map(
     image <- magick::image_read(path_in)
     image <- magick::image_resize(image, "192x")
     magick::image_write(image, path_out)
-  }, 
-  
+  },
   sub("\\.png", "_01.png", pngs)[which(outdated)],
   thumbs[which(outdated)]
 ))
