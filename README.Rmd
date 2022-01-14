@@ -20,11 +20,10 @@ pngs <- sprintf("posters/%s/%s.png", posters, posters)
 thumbs <- sprintf("thumbs/%s.png", posters)
 
 outdated <- !file.exists(thumbs) |
-  min(sapply(c(pngs, thumbs), file.mtime)) < max(
-    sapply(
-      X = c(rscripts, "assets/social.R"),
-      FUN = file.mtime
-    )
+  file.mtime(thumbs) < sapply(
+    X = file.mtime(rscripts),
+    FUN = function(x, y) max(c(x, y)),
+    y = file.mtime("assets/social.R")
   )
 
 invisible(lapply(rscripts[which(outdated)], source, encoding = "UTF-8"))
