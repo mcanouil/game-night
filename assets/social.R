@@ -76,10 +76,10 @@ social <- function(
   callr::r(
     func = render_poster,
     args = list(
-      input_poster = input_poster,
-      input_announcement = input_announcement,
+      input = input,
       output = output,
       rmd_params = rmd_params,
+      output_yaml = output_yaml,
       delay = delay
     )
   )
