@@ -74,7 +74,7 @@ social <- function(
     invisible(output_pngs)
   }
   callr::r(
-    func = render_meetup,
+    func = render_poster,
     args = list(
       input_poster = input_poster,
       input_announcement = input_announcement,
