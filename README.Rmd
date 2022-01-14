@@ -14,28 +14,30 @@ output: github_document
 source("assets/social.R")
 library(magick)
 
-rscript <- list.files(path = "R", pattern = "^20.*\\.R$", full.names = TRUE)
-posters <- sub("\\.R$", "", basename(rscript))
-png <- sprintf("posters/%s/%s.png", posters, posters)
-thumb <- sprintf("thumbs/%s.png", posters)
+rscripts <- list.files(path = "R", pattern = "^20.*\\.R$", full.names = TRUE)
+posters <- sub("\\.R$", "", basename(rscripts))
+pngs <- sprintf("posters/%s/%s.png", posters, posters)
+thumbs <- sprintf("thumbs/%s.png", posters)
 
-resize <- function(path_in, path_out) {
-  image <- magick::image_read(path_in)
-  image <- magick::image_resize(image, "192x")
-  magick::image_write(image, path_out)
-}
-
-outdated <- !file.exists(thumb) |
-  min(sapply(c(png, thumbs), file.mtime)) < max(
+outdated <- !file.exists(thumbs) |
+  min(sapply(c(pngs, thumbs), file.mtime)) < max(
     sapply(
-      X = c(rscript, "assets/social.R"),
+      X = c(rscripts, "assets/social.R"),
       FUN = file.mtime
     )
   )
 
-invisible(lapply(rscript[outdated], source, encoding = "UTF-8"))
-invisible(Map(resize, sub("\\.png", "_01.png", png)[outdated], thumb[outdated]))
-unlink(dirname(png)[as.Date(posters) < Sys.Date()], recursive = TRUE)
+invisible(lapply(rscripts[outdated], source, encoding = "UTF-8"))
+invisible(Map(
+  f = function(path_in, path_out) {
+    image <- magick::image_read(path_in)
+    image <- magick::image_resize(image, "192x")
+    magick::image_write(image, path_out)
+  }, 
+  sub("\\.png", "_01.png", pngs)[outdated],
+  thumbs[outdated]
+))
+unlink(dirname(pngs)[as.Date(posters) < Sys.Date()], recursive = TRUE)
 ```
 
 ```{r, results = "asis", echo = FALSE}
@@ -49,7 +51,7 @@ cell <- sprintf(
       "</a>",
     "</td>"
   ),
-  dirname(png), posters, thumb, posters
+  dirname(pngs), posters, thumbs, posters
 )
 
 cols <- 4
