@@ -26,65 +26,31 @@ resize <- function(path_in, path_out) {
 }
 
 outdated <- !file.exists(thumb) |
-  file.mtime(thumb) < file.mtime(rscript) |
-  file.mtime(thumb) < file.mtime("assets/social.R")
+  min(sapply(c(png, thumbs), file.mtime)) < max(
+    sapply(
+      X = c(rscript, "assets/social.R"),
+      FUN = file.mtime
+    )
+  )
 
 invisible(lapply(rscript[outdated], source, encoding = "UTF-8"))
-
-combine <- function(rscript, pattern = "OVS|LSL") {
-  posters <- sub("\\.R$", "", unlist(lapply(
-    X = rscript,
-    FUN = function(x) if (any(grepl(pattern, readLines(con = x)))) x
-  )))
-  invisible(lapply(X = posters, function(poster) {
-    images <- do.call("c", lapply(
-      X = sort(list.files(
-        path = sprintf("posters/%s", basename(poster)),
-        pattern = "_.*\\.png$",
-        full.names = TRUE
-      )),
-      FUN = magick::image_read
-    ))
-
-    # output_image <- magick::image_append(
-    #   c(
-    #     magick::image_scale(images[1], "1280x720"),
-    #     magick::image_scale(magick::image_append(
-    #       image = c(
-    #         magick::image_append(images[2:3], stack = FALSE),
-    #         magick::image_append(images[4:5], stack = FALSE)
-    #       ),
-    #       stack = TRUE
-    #     ), "1280x720")
-    #   ),
-    #   stack = TRUE
-    # )
-
-    output_image <- magick::image_scale(
-      image = magick::image_append(
-        image = images[1:5],
-        stack = TRUE
-      ),
-      geometry = "720x"
-    )
-
-    magick::image_write(
-      image = output_image,
-      path = sprintf("posters/%s/%s.png", basename(poster), basename(poster))
-    )
-  }))
-}
-combine(rscript[outdated])
-
 invisible(Map(resize, sub("\\.png", "_01.png", png)[outdated], thumb[outdated]))
-
 unlink(dirname(png)[as.Date(posters) < Sys.Date()], recursive = TRUE)
 ```
 
 ```{r, results = "asis", echo = FALSE}
-img <- glue::glue('<img alt="Poster for {posters} game night" src="{thumb}" width="192" height="108" />')
-png_link <- glue::glue('<a href="{dirname(png)}">{posters}</a>')
-cell <- paste0('<td align = "center">', img, "<br />", png_link, "</td>")
+cell <- sprintf(
+  paste0(
+    '<td align = "center">',
+      '<a href="%s>',
+        '<img alt="Poster for %s game night" src="%s" width="192" height="108" />',
+        "<br/>",
+        "%s",
+      "</a>",
+    "</td>"
+  ),
+  dirname(png), posters, thumb, posters
+)
 
 cols <- 4
 rows <- ceiling(length(cell) / cols)
