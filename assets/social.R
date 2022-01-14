@@ -1,111 +1,85 @@
-library(chromote)
+# # MIT License
+# 
+# Copyright (c) 2022 Mickaël Canouil
+# 
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
+library(here)
 library(callr)
 library(rmarkdown)
+library(xaringanBuilder)
 
-social <- function(input, output, rmd_params, output_yaml = "assets/_output.yaml", chrome_path = NULL, delay = 1) {
-  callr::r(
-    func = function(input, output, rmd_params, output_yaml, chrome_path, delay) {
-      web_browser <- suppressMessages(try(chromote::ChromoteSession$new(), silent = TRUE))
+social <- function(
+  input = here::here("assets/poster.Rmd"),
+  output,
+  rmd_params,
+  output_yaml = "assets/_output.yaml",
+  chrome_path = NULL,
+  delay = 1
+) {
+  render_poster <- function(
+    input, output,
+    rmd_params, output_yaml,
+    chrome_path,
+    delay = 1
+  ) {
+    file_name <- file.path(
+      dirname(output),
+      sub("\\..*", "", basename(output)),
+      sub("\\.png", "_%02d.png", basename(output))
+    )
+    dir.create(
+      path = dirname(file_name),
+      showWarnings = FALSE,
+      recursive = TRUE,
+      mode = "0775"
+    )
 
-      if (
-        inherits(web_browser, "try-error") &&
-        is.null(chrome_path) &&
-        Sys.info()[["sysname"]] == "Windows"
-      ) {
-        edge_path <- "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe"
-        if (file.exists(edge_path)) {
-          Sys.setenv(CHROMOTE_CHROME = edge_path)
-          web_browser <- chromote::ChromoteSession$new()
-        } else {
-          stop('Please set Sys.setenv(CHROMOTE_CHROME = "Path/To/Chrome")')
-        }
-      }
-
-      xaringan_poster <- rmarkdown::render(
-        input = input,
-        output_dir = tempdir(),
-        encoding = "UTF-8",
-        params = rmd_params,
-        output_yaml = output_yaml
-      )
-
-      web_browser$Page$navigate(xaringan_poster, wait_ = Sys.info()[["sysname"]] != "Windows")
-      on.exit(web_browser$close(), add = TRUE)
-      web_browser$Page$loadEventFired()
-
-      current_slide <- function() {
-        x <- web_browser$Runtime$evaluate("slideshow.getCurrentSlideIndex()")$result$value
-        as.integer(x) + 1L
-      }
-
-      slide_is_continuation <- function() {
-        web_browser$Runtime$evaluate(
-          "document.querySelector('.remark-visible').matches('.has-continuation')"
-        )$result$value
-      }
-
-      hash_current_slide <- function() {
-        digest::digest(web_browser$Runtime$evaluate(
-          "document.querySelector('.remark-visible').innerHTML"
-        )$result$value)
-      }
-
-      expected_slides <- as.integer(
-        web_browser$Runtime$evaluate("slideshow.getSlideCount()")$result$value
-      )
-
-      max_slides <- expected_slides * 4
-
-      idx_slide <- current_slide()
-      last_hash <- ""
-      idx_part <- 0L
-      # png_files <- vector("character", max_slides)
-      for (i in seq_len(max_slides)) {
-        if (i > 1) {
-          web_browser$Input$dispatchKeyEvent(
-            "rawKeyDown",
-            windowsVirtualKeyCode = 39,
-            code = "ArrowRight",
-            key = "ArrowRight",
-            wait_ = TRUE
-          )
-        }
-
-        if (current_slide() == idx_slide) {
-          # step <- 0L
-          idx_part <- idx_part + 1L
-        } else {
-          # step <- 1L
-          idx_part <- 1L
-        }
-        idx_slide <- current_slide()
-
-        if (slide_is_continuation()) next
-        Sys.sleep(delay)
-
-        this_hash <- hash_current_slide()
-        if (identical(last_hash, this_hash)) break
-        last_hash <- this_hash
-
-        file_name <- file.path(
-          dirname(output),
-          sub("\\..*", "", basename(output)),
-          sub("\\.png", "_%02d.png", basename(output))
-        )
-        dir.create(path = dirname(file_name), showWarnings = FALSE, recursive = TRUE, mode = "0775")
-        web_browser$screenshot(
-          filename = sprintf(file_name, i),
-          selector = "div.remark-slide-scaler",
-          scale = 2
-        )
-      }
-    },
-    args = list(
+    xaringan_poster <- rmarkdown::render(
       input = input,
+      output_dir = tempdir(),
+      encoding = "UTF-8",
+      params = rmd_params,
+      output_yaml = output_yaml
+    )
+    on.exit(unlink(xaringan_poster))
+    output_pngs <- sapply(
+      X = seq_len(5),
+      FUN = function(i) {
+        xaringanBuilder::build_png(
+          input = xaringan_poster,
+          output_file = sprintf(file_name, i),
+          slides = i
+        )
+        sprintf(file_name, i)
+      }
+    )
+
+    invisible(output_pngs)
+  }
+  callr::r(
+    func = render_meetup,
+    args = list(
+      input_poster = input_poster,
+      input_announcement = input_announcement,
       output = output,
       rmd_params = rmd_params,
-      output_yaml = output_yaml,
-      chrome_path = chrome_path,
       delay = delay
     )
   )

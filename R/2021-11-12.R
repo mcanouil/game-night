@@ -1,5 +1,4 @@
 social(
-  input = "poster.Rmd",
   output = "posters/2021-11-12.png",
   rmd_params = list(
     title = "Game Night #8",
