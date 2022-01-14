@@ -27,15 +27,16 @@ outdated <- !file.exists(thumbs) |
     )
   )
 
-invisible(lapply(rscripts[outdated], source, encoding = "UTF-8"))
+invisible(lapply(rscripts[which(outdated)], source, encoding = "UTF-8"))
 invisible(Map(
   f = function(path_in, path_out) {
     image <- magick::image_read(path_in)
     image <- magick::image_resize(image, "192x")
     magick::image_write(image, path_out)
   }, 
-  sub("\\.png", "_01.png", pngs)[outdated],
-  thumbs[outdated]
+  
+  sub("\\.png", "_01.png", pngs)[which(outdated)],
+  thumbs[which(outdated)]
 ))
 unlink(dirname(pngs)[as.Date(posters) < Sys.Date()], recursive = TRUE)
 ```
