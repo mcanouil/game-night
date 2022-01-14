@@ -20,13 +20,12 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-library(here)
 library(callr)
 library(rmarkdown)
 library(xaringanBuilder)
 
 social <- function(
-  input = here::here("assets/poster.Rmd"),
+  input = "assets/poster.Rmd",
   output,
   rmd_params,
   output_yaml = "assets/_output.yaml",
