@@ -11,10 +11,11 @@ output: github_document
 <!-- badges: end -->
 
 ```{r, echo = FALSE, message = FALSE}
-source("assets/social.R")
+source(here::here("assets/social.R"))
 library(magick)
 
 rscripts <- list.files(path = "R", pattern = "^20.*\\.R$", full.names = TRUE)
+
 posters <- sub("\\.R$", "", basename(rscripts))
 pngs <- sprintf("posters/%s/%s.png", posters, posters)
 thumbs <- sprintf("thumbs/%s.png", posters)
@@ -23,7 +24,7 @@ outdated <- !file.exists(thumbs) |
   file.mtime(thumbs) < sapply(
     X = file.mtime(rscripts),
     FUN = function(x, y) max(c(x, y)),
-    y = file.mtime("assets/social.R")
+    y = file.mtime(here::here("assets/social.R"))
   )
 
 invisible(lapply(rscripts[which(outdated)], source, encoding = "UTF-8"))

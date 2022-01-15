@@ -1,5 +1,4 @@
 # social(
-#   input = "poster.Rmd",
 #   output = "posters/2021-09-20.png",
 #   rmd_params = list(
 #     title = "<h1 style = 'font-size:100px;'>C'Est L'Histoire <span style = 'text-decoration:line-through;text-decoration-color:#4b0200;'>D'Un-e Nain-e</span> ...</br>#29<h1>",
