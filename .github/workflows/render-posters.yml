@@ -18,15 +18,12 @@ jobs:
 
       - uses: r-lib/actions/setup-pandoc@v2
 
+      - uses: r-lib/actions/setup-r-dependencies@v2
+
       - name: Install librairies
         run: |
           sudo apt-get update
           sudo apt-get install -y google-chrome-stable libcurl4-openssl-dev libpoppler-cpp-dev libmagick++-dev
-
-      - name: Install dependencies
-        run: |
-          Rscript -e 'install.packages("pak")'
-          Rscript -e 'pak::pkg_install(c("callr", "pdftools", "qpdf", "magick", "rstudio/chromote", "jhelvy/xaringanBuilder"))'
 
       - name: Render README
         run: Rscript -e 'rmarkdown::render("README.Rmd", output_options = list(html_preview = FALSE))'
