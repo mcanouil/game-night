@@ -33,6 +33,7 @@ message("Rendering posters ...")
 invisible(lapply(rscripts[which(outdated)], source, encoding = "UTF-8"))
 
 message("Rendering thumbs images ...")
+dir.create("thumbs", showWarnings = FALSE, recursive = TRUE)
 invisible(Map(
   f = function(path_in, path_out) {
     if (!file.exists(path_in)) return(NULL)
