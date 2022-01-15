@@ -33,6 +33,7 @@ social <- function(
   delay = 1
 ) {
   message(sprintf("Running %s", basename(output)))
+
   render_poster <- function(
     input, output,
     rmd_params, output_yaml,
