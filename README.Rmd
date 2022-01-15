@@ -33,6 +33,7 @@ outdated <- !file.exists(thumbs) |
 invisible(lapply(rscripts[which(outdated)], source, encoding = "UTF-8"))
 invisible(Map(
   f = function(path_in, path_out) {
+    if (!file.exists(path_in)) return(NULL)
     image <- magick::image_read(path_in)
     image <- magick::image_resize(image, "192x")
     magick::image_write(image, path_out)
