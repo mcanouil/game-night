@@ -21,11 +21,14 @@ pngs <- sprintf("posters/%s/%s.png", posters, posters)
 thumbs <- sprintf("thumbs/%s.png", posters)
 
 outdated <- !file.exists(thumbs) |
+(
+  as.POSIXct(posters) > file.mtime(thumbs) &
   file.mtime(thumbs) < sapply(
     X = file.mtime(rscripts),
     FUN = function(x, y) max(c(x, y)),
     y = file.mtime("assets/social.R")
   )
+)
 
 invisible(lapply(rscripts[which(outdated)], source, encoding = "UTF-8"))
 invisible(Map(
@@ -44,7 +47,7 @@ unlink(dirname(pngs)[as.Date(posters) < Sys.Date()], recursive = TRUE)
 cell <- sprintf(
   paste0(
     '<td align = "center">',
-      '<a href="%s>',
+      '<a href="%s">',
         '<img alt="Poster for %s game night" src="%s" width="192" height="108" />',
         "<br/>",
         "%s",
