@@ -14,7 +14,7 @@ output: github_document
 source("assets/social.R")
 library(magick)
 
-rscripts <- list.files(path = "R", pattern = "^20.*\\.R$", full.names = TRUE)[1]
+rscripts <- list.files(path = "R", pattern = "^20.*\\.R$", full.names = TRUE)
 
 posters <- sub("\\.R$", "", basename(rscripts))
 pngs <- sprintf("posters/%s/%s.png", posters, posters)
@@ -47,6 +47,16 @@ invisible(Map(
 
 message("Removing past posters ...")
 unlink(dirname(pngs)[as.Date(posters) < Sys.Date()], recursive = TRUE)
+if (length(list.files("posters")) == 0) {
+  file.create("posters/.gitkeep")
+} else {
+  unlink("posters/.gitkeep")
+}
+if (length(list.files("thumbs")) == 0) {
+  file.create("thumbs/.gitkeep")
+} else {
+  unlink("thumbs/.gitkeep")
+}
 ```
 
 ```{r, results = "asis", echo = FALSE}
