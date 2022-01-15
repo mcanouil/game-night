@@ -4,10 +4,10 @@ xaringan::moon_reader:
   mathjax: null
   css: !r
     - "default"
-    - "assets/default.css"
-    - "assets/fonts.css"
+    - "default.css"
+    - "fonts.css"
   includes:
-    in_header: assets/_scripts.html
+    in_header: _scripts.html
   nature:
     highlightStyle: github
     highlightLines: true

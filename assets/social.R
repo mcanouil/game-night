@@ -25,10 +25,10 @@ library(rmarkdown)
 library(xaringanBuilder)
 
 social <- function(
-  input = here::here("assets/poster.Rmd"),
+  input = "assets/poster.Rmd",
   output,
   rmd_params,
-  output_yaml = here::here("assets/_output.yaml"),
+  output_yaml = "assets/_output.yaml",
   chrome_path = NULL,
   delay = 1
 ) {

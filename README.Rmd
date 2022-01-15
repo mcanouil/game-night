@@ -11,7 +11,7 @@ output: github_document
 <!-- badges: end -->
 
 ```{r, echo = FALSE, message = FALSE}
-source(here::here("assets/social.R"))
+source("assets/social.R")
 library(magick)
 
 rscripts <- list.files(path = "R", pattern = "^20.*\\.R$", full.names = TRUE)
@@ -24,7 +24,7 @@ outdated <- !file.exists(thumbs) |
   file.mtime(thumbs) < sapply(
     X = file.mtime(rscripts),
     FUN = function(x, y) max(c(x, y)),
-    y = file.mtime(here::here("assets/social.R"))
+    y = file.mtime("assets/social.R")
   )
 
 invisible(lapply(rscripts[which(outdated)], source, encoding = "UTF-8"))
