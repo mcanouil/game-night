@@ -59,7 +59,6 @@ social <- function(
       params = rmd_params,
       output_yaml = output_yaml
     )
-    on.exit(unlink(xaringan_poster))
     output_pngs <- sapply(
       X = seq_len(5),
       FUN = function(i) {
@@ -71,6 +70,8 @@ social <- function(
         sprintf(file_name, i)
       }
     )
+
+    on.exit(unlink(xaringan_poster))
 
     invisible(output_pngs)
   }

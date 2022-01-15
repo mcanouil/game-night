@@ -29,8 +29,10 @@ outdated <- !file.exists(thumbs) |
       y = file.mtime("assets/social.R")
     )
   )
-
+message("Rendering posters ...")
 invisible(lapply(rscripts[which(outdated)], source, encoding = "UTF-8"))
+
+message("Rendering thumbs images ...")
 invisible(Map(
   f = function(path_in, path_out) {
     if (!file.exists(path_in)) return(NULL)
@@ -41,6 +43,8 @@ invisible(Map(
   sub("\\.png", "_01.png", pngs)[which(outdated)],
   thumbs[which(outdated)]
 ))
+
+message("Removing past posters ...")
 unlink(dirname(pngs)[as.Date(posters) < Sys.Date()], recursive = TRUE)
 ```
 
