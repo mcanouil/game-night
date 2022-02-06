@@ -64,7 +64,7 @@ cell <- sprintf(
   paste0(
     '<td align = "center">',
       '<a href="%s">',
-        '<img alt="Poster for %s game night" src="%s" width="100%" height="auto" />',
+        '<img alt="Poster for %s game night" src="%s" width="100%%" height="auto" />',
         "<br/>",
         "%s",
       "</a>",
