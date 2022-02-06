@@ -20,15 +20,7 @@ posters <- sub("\\.R$", "", basename(rscripts))
 pngs <- sprintf("posters/%s/%s.png", posters, posters)
 thumbs <- sprintf("thumbs/%s.png", posters)
 
-outdated <- !file.exists(thumbs) |
-  (
-    as.POSIXct(posters) > file.mtime(thumbs) &
-    file.mtime(thumbs) < sapply(
-      X = file.mtime(rscripts),
-      FUN = function(x, y) max(c(x, y)),
-      y = file.mtime("assets/social.R")
-    )
-  )
+outdated <- !file.exists(thumbs)
 message("Rendering posters ...")
 invisible(lapply(rscripts[which(outdated)], source, encoding = "UTF-8"))
 
