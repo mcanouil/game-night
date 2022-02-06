@@ -65,7 +65,8 @@ social <- function(
         xaringanBuilder::build_png(
           input = xaringan_poster,
           output_file = sprintf(file_name, i),
-          slides = i
+          slides = i,
+          density = 300
         )
         sprintf(file_name, i)
       }
