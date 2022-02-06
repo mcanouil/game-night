@@ -44,5 +44,8 @@
 <td align="center">
 <a href="posters/2022-02-04"><img alt="Poster for 2022-02-04 game night" src="thumbs/2022-02-04.png" width="192" height="108" /><br/>2022-02-04</a>
 </td>
+<td align="center">
+<a href="posters/2022-02-18"><img alt="Poster for 2022-02-18 game night" src="thumbs/2022-02-18.png" width="192" height="108" /><br/>2022-02-18</a>
+</td>
 </tr>
 </table>
