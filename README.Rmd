@@ -46,7 +46,7 @@ invisible(Map(
 ))
 
 message("Removing past posters ...")
-unlink(dirname(pngs)[as.Date(posters) < Sys.Date()], recursive = TRUE)
+unlink(dirname(pngs)[as.Date(posters) < Sys.Date()], recursive = TRUE, force = TRUE)
 if (length(list.files("posters")) == 0) {
   file.create("posters/.gitkeep")
 } else {
