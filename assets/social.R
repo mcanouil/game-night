@@ -23,6 +23,7 @@
 library(callr)
 library(rmarkdown)
 library(xaringanBuilder)
+library(magick)
 
 social <- function(
   input = "assets/poster.Rmd",
@@ -68,7 +69,11 @@ social <- function(
           slides = i,
           density = 300
         )
-        sprintf(file_name, i)
+        img_file <- sprintf(file_name, i)
+        img <- magick::image_read(img_file)
+        img <- magick::image_trim(img)
+        img <- magick::image_write(img, img_file)
+        img_file
       }
     )
 
