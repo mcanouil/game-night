@@ -8,6 +8,8 @@
 [![License](https://img.shields.io/github/license/mcanouil/game-night)](LICENSE)
 <!-- badges: end -->
 
+    ## [1] TRUE
+
 <table>
 <tr>
 <td align="center">
