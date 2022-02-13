@@ -12,7 +12,6 @@ output: github_document
 
 ```{r, echo = FALSE, message = FALSE}
 source("assets/social.R")
-library(magick)
 
 rscripts <- list.files(path = "R", pattern = "^20.*\\.R$", full.names = TRUE)
 
