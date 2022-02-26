@@ -70,20 +70,20 @@ cell <- sprintf(
   posters, thumbs, posters
 )
 
-url_cell <- sprintf(
-  paste0(
-    '<td align = "center">',
-      '<a href="%s">',
-        '<img alt="Poster for %s game night" src="%s" width="100%%" height="auto" />',
-        "<br/>",
-        "%s",
-      "</a>",
-    "</td>"
-  ),
-  dirname(pngs), posters, thumbs, posters
-)
-
-cell[length(cell)] <- tail(url_cell, 1)
+if (any(future_gn <- as.Date(posters) >= Sys.Date())) {
+  cell[which(future_gn)] <- sprintf(
+    paste0(
+      '<td align = "center">',
+        '<a href="%s">',
+          '<img alt="Poster for %s game night" src="%s" width="100%%" height="auto" />',
+          "<br/>",
+          "%s",
+        "</a>",
+      "</td>"
+    ),
+    dirname(pngs), posters, thumbs, posters
+  )[which(future_gn)]
+}
 
 cols <- 4
 rows <- ceiling(length(cell) / cols)
