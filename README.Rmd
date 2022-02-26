@@ -10,7 +10,7 @@ output: github_document
 [![License](https://img.shields.io/github/license/mcanouil/game-night)](LICENSE)
 <!-- badges: end -->
 
-```{r, echo = FALSE, message = FALSE}
+```{r, include = FALSE}
 source("assets/create_game_night.R")
 
 rscripts <- list.files(path = "R", pattern = "^20.*\\.R$", full.names = TRUE)
@@ -27,7 +27,7 @@ outdated <- !file.exists(thumbs) |
       FUN = function(x, y) max(c(x, y)),
       y = file.mtime("assets/create_game_night.R")
     )
-  ) | TRUE
+  )
 message("Rendering posters ...")
 invisible(lapply(rscripts[which(outdated)], source, encoding = "UTF-8"))
 
@@ -62,6 +62,17 @@ if (length(list.files("thumbs")) == 0) {
 cell <- sprintf(
   paste0(
     '<td align = "center">',
+      '<img alt="Poster for %s game night" src="%s" width="100%%" height="auto" />',
+      "<br/>",
+      "%s",
+    "</td>"
+  ),
+  posters, thumbs, posters
+)
+
+url_cell <- sprintf(
+  paste0(
+    '<td align = "center">',
       '<a href="%s">',
         '<img alt="Poster for %s game night" src="%s" width="100%%" height="auto" />',
         "<br/>",
@@ -71,6 +82,8 @@ cell <- sprintf(
   ),
   dirname(pngs), posters, thumbs, posters
 )
+
+cell[length(cell)] <- tail(url_cell, 1)
 
 cols <- 4
 rows <- ceiling(length(cell) / cols)
