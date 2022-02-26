@@ -1,4 +1,4 @@
-social(
+create_game_night(
   output = "posters/2021-09-10.png",
   rmd_params = list(
     title = "Game Night #3",
