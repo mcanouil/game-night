@@ -6,6 +6,7 @@ params:
 title: "<img src='https://raw.githubusercontent.com/mcanouil/hex-stickers/main/SVG/mcsb.svg' width = '200px' style='margin-bottom:-50px;opacity:0.75;'/></br>Game Night #`r params[['number']]`"
 author: 'Mickaël C. -- `r params[["group"]]`'
 subtitle: '`r params[["date"]]`'
+pagetitle: "Game Night"
 ---
 
 class: lettrine
