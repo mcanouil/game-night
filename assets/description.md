@@ -1,3 +1,5 @@
+# [Jeux] Game Night # (MC)
+
 Limité à 5/6/7 personnes (organisateur inclus).
 
 Validation des inscriptions ("Participe" = engagement), par ordre d'arrivée sur un groupe Messenger dédié, 24 heures avant.
