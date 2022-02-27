@@ -63,8 +63,6 @@ cell <- sprintf(
   paste0(
     '<td align = "center">',
       '<img alt="Poster for %s game night" src="%s" width="100%%" height="auto" />',
-      "<br/>",
-      "%s",
     "</td>"
   ),
   posters, thumbs, posters
