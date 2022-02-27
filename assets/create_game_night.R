@@ -58,7 +58,8 @@ create_game_night <- function(
       output_dir = tempdir(),
       encoding = "UTF-8",
       params = rmd_params,
-      output_yaml = output_yaml
+      output_yaml = output_yaml,
+      quiet = TRUE
     )
     output_pngs <- sapply(
       X = seq_len(5),
