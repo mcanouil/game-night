@@ -76,8 +76,6 @@ if (any(future_gn <- as.Date(posters) >= Sys.Date())) {
       '<td align = "center">',
         '<a href="%s">',
           '<img alt="Poster for %s game night" src="%s" width="100%%" height="auto" />',
-          "<br/>",
-          "%s",
         "</a>",
       "</td>"
     ),
