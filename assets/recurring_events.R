@@ -18,10 +18,10 @@ events <- date_shift(
 
 rcode <- sprintf(
   paste(
-    "create_spotlight_night(",
+    "create_game_night(",
     '  output = "posters/%s.png",',
     "  rmd_params = list(",
-    '    title = "%s",',
+    '    number = "%s",',
     '    date = "%s %s %s 2022 à 19 h 30"',
     "  )",
     ")",
