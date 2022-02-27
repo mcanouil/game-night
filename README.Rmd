@@ -65,7 +65,7 @@ cell <- sprintf(
       '<img alt="Poster for %s game night" src="%s" width="100%%" height="auto" />',
     "</td>"
   ),
-  posters, thumbs, posters
+  posters, thumbs
 )
 
 if (any(future_gn <- as.Date(posters) >= Sys.Date())) {
@@ -77,7 +77,7 @@ if (any(future_gn <- as.Date(posters) >= Sys.Date())) {
         "</a>",
       "</td>"
     ),
-    dirname(pngs), posters, thumbs, posters
+    dirname(pngs), posters, thumbs
   )[which(future_gn)]
 }
 
