@@ -21,6 +21,16 @@ jobs:
       - uses: r-lib/actions/setup-pandoc@v2
 
       - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          package: |
+            any::callr
+            any::pdftools
+            any::qpdf
+            any::magick
+            github::rstudio/chromote
+            github::jhelvy/xaringanBuilder
+            any::rmarkdown
+            any::xaringan
 
       - name: Render README
         run: |
