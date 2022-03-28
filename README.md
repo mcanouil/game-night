@@ -48,12 +48,12 @@
 <img alt="Poster for 2022-02-18 game night" src="thumbs/2022-02-18.png" width="100%" height="auto" />
 </td>
 <td align="center">
-<a href="posters/2022-03-11"><img alt="Poster for 2022-03-11 game night" src="thumbs/2022-03-11.png" width="100%" height="auto" /></a>
+<img alt="Poster for 2022-03-11 game night" src="thumbs/2022-03-11.png" width="100%" height="auto" />
 </td>
 </tr>
 <tr>
 <td align="center">
-<a href="posters/2022-03-25"><img alt="Poster for 2022-03-25 game night" src="thumbs/2022-03-25.png" width="100%" height="auto" /></a>
+<img alt="Poster for 2022-03-25 game night" src="thumbs/2022-03-25.png" width="100%" height="auto" />
 </td>
 <td align="center">
 <a href="posters/2022-04-08"><img alt="Poster for 2022-04-08 game night" src="thumbs/2022-04-08.png" width="100%" height="auto" /></a>
