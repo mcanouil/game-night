@@ -20,6 +20,11 @@ jobs:
 
       - uses: r-lib/actions/setup-pandoc@v2
 
+      - name: Intall system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install libavfilter-dev
+
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           packages: |
@@ -31,6 +36,7 @@ jobs:
             github::jhelvy/xaringanBuilder
             any::rmarkdown
             any::xaringan
+            any::av
 
       - name: Render README
         run: |
