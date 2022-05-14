@@ -13,7 +13,10 @@ output: github_document
 ```{r, include = FALSE}
 source("assets/create_game_night.R")
 
-rscripts <- list.files(path = "R", pattern = "^20.*\\.R$", full.names = TRUE)
+rscripts <- sort(
+  x = list.files(path = "R", pattern = "^20.*\\.R$", full.names = TRUE),
+  decreasing = TRUE
+)
 
 posters <- sub("\\.R$", "", basename(rscripts))
 pngs <- sprintf("posters/%s/%s.png", posters, posters)
