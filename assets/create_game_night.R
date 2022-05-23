@@ -20,13 +20,12 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-library(callr)
-library(rmarkdown)
-library(xaringanBuilder)
-library(magick)
+# library(callr)
+# library(quarto)
+# library(webshot2)
 
 create_game_night <- function(
-  input = "assets/poster.Rmd",
+  input = "assets/poster.qmd",
   output,
   rmd_params,
   output_yaml = "assets/_output.yaml",
@@ -34,56 +33,48 @@ create_game_night <- function(
   delay = 1
 ) {
   message(sprintf("Running %s", basename(output)))
-
-  render_poster <- function(
-    input, output,
-    rmd_params, output_yaml,
-    chrome_path,
-    delay = 1
-  ) {
-    file_name <- file.path(
-      dirname(output),
-      sub("\\..*", "", basename(output)),
-      sub("\\.png", "_%02d.png", basename(output))
-    )
-    dir.create(
-      path = dirname(file_name),
-      showWarnings = FALSE,
-      recursive = TRUE,
-      mode = "0775"
-    )
-
-    html_poster <- quarto::quarto_render(
-      input = input,
-      output_dir = tempdir(),
-      encoding = "UTF-8",
-      execute_params = rmd_params,
-      quiet = TRUE
-    )
-    output_pngs <- sapply(
-      X = seq_len(5),
-      FUN = function(i) {
-        xaringanBuilder::build_png(
-          input = xaringan_poster,
-          output_file = sprintf(file_name, i),
-          slides = i,
-          density = 300
-        )
-        img_file <- sprintf(file_name, i)
-        img <- magick::image_read(img_file)
-        img <- magick::image_trim(img)
-        img <- magick::image_resize(img, "1920x1005!")
-        img <- magick::image_write(img, img_file)
-        img_file
-      }
-    )
-
-    on.exit(unlink(xaringan_poster))
-
-    invisible(output_pngs)
+  if (!all(dir.exists(c("posters", "contents")))) {
+    dir.create(c("posters", "contents"), showWarnings = FALSE, mode = "0755")
   }
   callr::r(
-    func = render_poster,
+    func = function(
+      input, output,
+      rmd_params, output_yaml,
+      chrome_path,
+      delay = 1
+    ) {
+      Sys.setenv(CHROMOTE_CHROME = "/Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser")
+      on.exit(unlink(sub("\\.qmd$", ".html", input)))
+      html_poster <- quarto::quarto_render(
+        input = input,
+        execute_params = rmd_params,
+        quiet = TRUE
+      )
+      webshot2::webshot(
+        url = sub("\\.qmd$", ".html", input),
+        file = output,
+        vwidth = 1920,
+        vheight = 1005
+      )
+
+      if (
+        !all(file.exists(sprintf("contents/contents-%02d.png", 1:4)))
+      ) {
+        for (i in 1:4) {
+          webshot2::webshot(
+            url = sprintf(
+              "file:////%s#%s",
+              normalizePath(sub("\\.qmd$", ".html", input)),
+              i
+            ),
+            file = sprintf("contents/contents-%02d.png", i),
+            vwidth = 1920,
+            vheight = 1005
+          )
+        }
+      }
+      invisible(output)
+    },
     args = list(
       input = input,
       output = output,
