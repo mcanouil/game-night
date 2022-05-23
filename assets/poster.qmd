@@ -1,0 +1,74 @@
+---
+pagetitle: "Game Night"
+title: "<img src='https://raw.githubusercontent.com/mcanouil/hex-stickers/main/SVG/mcsb.svg' width = '250px' style='margin-bottom:-100px;margin-top:0;opacity:0.75;'/></br>Game Night #`r params[['number']]`"
+author: '<u>Mickaël C.</u> -- `r params[["group"]]`'
+subtitle: '`r params[["date"]]`'
+format:
+  revealjs:
+    self-contained: true
+    slide-number: false
+    menu: false
+    progress: false
+    html-math-method: plain
+    theme: storybook.scss
+    footer: |
+      <a href = "https://creativecommons.org/licenses/by-sa/4.0/">License: CC-BY-SA-4.0</a>
+    include-in-header: favicon.html
+    background-image: cover.jpg
+params:
+  number: "11"
+  date: "Vendredi 6 Août 2021 à 19 h 30"
+  group: "Les Sorties Lilloises"
+---
+
+## Salutations {background-image="background.jpg"}
+
+Salutations à vous, vous qui vous êtes égaré-e-s ici et pas ailleurs !
+
+:::: {.columns}
+
+::: {.column width="20%"}
+
+<img src = "https://github.com/mcanouil.png" height = "175px" class = "picture" />
+
+:::
+
+::: {.column width="80%"}
+
+Il est important de noter et de rappeler que le __monde se divise en deux__^[L'un de ces groupes a de la chance.] :
+
+- celles et ceux qui __me connaissent__.
+
+- celles et ceux qui __ne me connaissent pas__.
+
+:::
+
+::::
+
+## Événement {.smaller background-image="background.jpg"}
+
+Entrons dans le cœur de cet événement, en commençant par les choses importantes.
+
+L'idée est de réunir plusieurs personnes (dans un maximum de huit) autour d'un « __potluck__ », pour reprendre le terme anglais d'Amérique du Nord (*c.-à-d.*, en bon français un « __repas-partagé__ »), et ce, __chez moi dans le secteur du Vieux-Lille__^[L'adresse sera communiquée aux participants par message privé (ou méthode similaire) 45 minutes avant. Aucune autre communication par ce support ne sera réalisée par l'oganisateur.] (__Rue Esquermoise / Royale__) de __19 h 30__ à XX h XX.
+
+Dès lors que le stock de victuailles aura atteint une quantité nécessaire et suffisante, il nous sera alors possible de partir dans __une (ou plusieurs) « aventure(s) » d'environ 30-45 minutes selon le jeu__.
+
+## Code de Conduite {.smaller background-image="background.jpg"}
+
+L'organisateur est dédié à __offrir une expérience de soirée jeux sûre et inclusive pour tous__, indépendamment de l'âge, du sexe, de l'orientation sexuelle, du handicap, de l'apparence physique, de la race ou de la religion (ou de l'absence de celle-ci).
+
+Tous les participants (y compris l'organisateur) des soirées jeux sont __tenus d'accepter et de s'engager à respecter le code de conduite__ suivant.
+
+Le code de conduite __s'applique à la soirée jeux__ et __s'étend aux échanges spécifiques__ à celle-ci sur les médias sociaux.
+
+## Code de Conduite {.smaller background-image="background.jpg"}
+
+1. Vous devez vous comporter de manière à garantir un environnement sûr et favorable pour
+toutes les personnes participant à l'événement.
+2. Vous ne devez pas tenir des propos ou avoir des comportements déplacés, ni entraver d'une
+quelconque manière le bon déroulement de l'événement ou gêner les autres personnes y
+participant.
+3. Vous ne devez pas tenir des propos ou avoir des comportements harcelants, abusifs,
+discriminatoires ou menaçants.
+4. Vous devez vous conformer aux consignes de l'organisateur de l'événement.
+5. Vous devez vous conformer à l'ensemble des lois et règlements applicables.
