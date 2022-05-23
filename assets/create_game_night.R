@@ -1,7 +1,7 @@
 # # MIT License
-# 
+#
 # Copyright (c) 2022 Mickaël Canouil
-# 
+#
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
 # in the Software without restriction, including without limitation the rights
@@ -25,29 +25,43 @@
 # library(webshot2)
 
 create_game_night <- function(
-  input = "assets/poster.qmd",
   output,
-  rmd_params,
-  output_yaml = "assets/_output.yaml",
-  chrome_path = NULL,
-  delay = 1
+  input = "assets/poster.qmd",
+  chrome_path = NULL
 ) {
+  # "/Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser"
   message(sprintf("Running %s", basename(output)))
   if (!all(dir.exists(c("posters", "contents")))) {
     dir.create(c("posters", "contents"), showWarnings = FALSE, mode = "0755")
   }
   callr::r(
-    func = function(
-      input, output,
-      rmd_params, output_yaml,
-      chrome_path,
-      delay = 1
-    ) {
-      Sys.setenv(CHROMOTE_CHROME = "/Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser")
+    func = function(input, output, chrome_path) {
+      Sys.setenv(CHROMOTE_CHROME = chrome_path)
       on.exit(unlink(sub("\\.qmd$", ".html", input)))
+      cap <- function(string) {
+        string <- strsplit(string, " ")[[1]]
+        capped <- grep("^[A-Z]", string, invert = TRUE)
+        substr(string[capped], 1, 1) <- toupper(substr(string[capped], 1, 1))
+        return(string)
+      }
+      Sys.setlocale("LC_TIME", "fr_FR.UTF-8")
       html_poster <- quarto::quarto_render(
         input = input,
-        execute_params = rmd_params,
+        execute_params = list(
+          number = sum(
+            as.Date(sub("\\.png$", "", list.files(
+              path = dirname(output),
+              pattern = "\\.png$"
+            ))) < sub("\\.png$", "", basename(output))
+          ) + 1,
+          date = paste(
+            c(
+              cap(format(as.Date("2022-05-20"), "%A %d %b %Y")),
+              "à 19 h 30"
+            ),
+            collapse = " "
+          )
+        ),
         quiet = TRUE
       )
       webshot2::webshot(
@@ -78,9 +92,7 @@ create_game_night <- function(
     args = list(
       input = input,
       output = output,
-      rmd_params = rmd_params,
-      output_yaml = output_yaml,
-      delay = delay
+      chrome_path
     )
   )
 }

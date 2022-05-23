@@ -5,14 +5,15 @@ author: '<u>Mickaël C.</u> -- `r params[["group"]]`'
 subtitle: '`r params[["date"]]`'
 format:
   revealjs:
+    width: 1380
+    height: 700
     self-contained: true
     slide-number: false
     menu: false
     progress: false
     html-math-method: plain
     theme: storybook.scss
-    footer: |
-      <a href = "https://creativecommons.org/licenses/by-sa/4.0/">License: CC-BY-SA-4.0</a>
+    footer: '<a href = "https://creativecommons.org/licenses/by-sa/4.0/">License: CC-BY-SA-4.0</a>'
     include-in-header: favicon.html
     background-image: cover.jpg
 params:
@@ -29,7 +30,7 @@ Salutations à vous, vous qui vous êtes égaré-e-s ici et pas ailleurs&nbsp;!
 
 ::: {.column width="40%"}
 
-![](https://github.com/mcanouil.png){.picture fig-align="center" width="75%"}
+![](https://github.com/mcanouil.png){.picture fig-align="center" width="50%"}
 
 :::
 
@@ -45,7 +46,7 @@ Il est important de noter et de rappeler que le __monde se divise en deux__^[L'u
 
 ::::
 
-## Événement {.smaller background-image="background.jpg"}
+## Événement {background-image="background.jpg"}
 
 Entrons dans le cœur de cet événement, en commençant par les choses importantes.
 
@@ -54,7 +55,7 @@ Aucune autre communication par ce support ne sera réalisée par l'oganisateur.]
 
 Dès lors que le stock de victuailles aura atteint une quantité nécessaire et suffisante, il nous sera alors possible de partir dans __une (ou plusieurs) « aventure(s) » d'environ 30-45 minutes selon le jeu__.
 
-## Code de Conduite {.smaller background-image="background.jpg"}
+## Code de Conduite {background-image="background.jpg"}
 
 L'organisateur est dédié à __offrir une expérience de soirée jeux sûre et inclusive pour tous__, indépendamment de l'âge, du sexe, de l'orientation sexuelle, du handicap, de l'apparence physique, de la race ou de la religion (ou de l'absence de celle-ci).
 
@@ -62,7 +63,7 @@ Tous les participants (y compris l'organisateur) des soirées jeux sont __tenus 
 
 Le code de conduite __s'applique à la soirée jeux__ et __s'étend aux échanges spécifiques__ à celle-ci sur les médias sociaux.
 
-## Code de Conduite {.smaller background-image="background.jpg"}
+## Code de Conduite {background-image="background.jpg"}
 
 1. Vous devez vous comporter de manière à garantir un environnement sûr et favorable pour
 toutes les personnes participant à l'événement.
