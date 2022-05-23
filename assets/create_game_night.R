@@ -59,11 +59,11 @@ create_game_night <- function(
             as.Date(sub("\\.png$", "", list.files(
               path = dirname(output),
               pattern = "\\.png$"
-            ))) < sub("\\.png$", "", basename(output))
+            ))) < as.Date(sub("\\.png$", "", basename(output)))
           ) + 1,
           date = paste(
             c(
-              cap(format(as.Date("2022-05-20"), "%A %d %b %Y")),
+              cap(format(as.Date(sub("\\.png$", "", basename(output))), "%A %d %b %Y")),
               "à 19 h 30"
             ),
             collapse = " "
