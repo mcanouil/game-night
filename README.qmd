@@ -22,7 +22,7 @@ posters <- list.files(
 )
 
 cell <- sprintf(
-  '<td align = "center">![Poster for %s game night](%s)</td>',
+  '<td><img alt="Poster for %s game night" src="%s"</img></td>',
   sub("\\.png$", "", posters), posters
 )
 
