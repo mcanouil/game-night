@@ -1,5 +1,5 @@
 ---
-title: "Game Night Poster"
+title: 'ame Night Poster <img src="https://raw.githubusercontent.com/mcanouil/hex-stickers/main/SVG/mcsb.svg" align="right" width="120" />'
 format: gfm
 execute:
   echo: false

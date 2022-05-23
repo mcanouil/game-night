@@ -1,4 +1,5 @@
-Game Night Poster
+ame Night Poster
+<img src="https://raw.githubusercontent.com/mcanouil/hex-stickers/main/SVG/mcsb.svg" align="right" width="120" />
 ================
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
