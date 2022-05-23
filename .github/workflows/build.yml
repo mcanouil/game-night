@@ -32,7 +32,7 @@ jobs:
       - name: Render Posters and README.md
         run: |
           source("assets/create_game_night.R")
-          all_events <- sprintf("posters/%s.png", readLines("events.txt"))
+          all_events <- sort(sprintf("posters/%s.png", readLines("events.txt")))
           events_to_create <- all_events[!file.exists(all_events)]
           if (length(events_to_create) > 0) {
             invisible(sapply(events_to_create, create_game_night))
