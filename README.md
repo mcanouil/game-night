@@ -24,6 +24,9 @@ Game Night Poster
 </tr>
 <tr>
 <td>
+<img alt="Poster for posters/2022-06-03 game night" src="posters/2022-06-03.png" />
+</td>
+<td>
 <img alt="Poster for posters/2022-05-20 game night" src="posters/2022-05-20.png" />
 </td>
 <td>
@@ -32,11 +35,11 @@ Game Night Poster
 <td>
 <img alt="Poster for posters/2022-04-22 game night" src="posters/2022-04-22.png" />
 </td>
+</tr>
+<tr>
 <td>
 <img alt="Poster for posters/2022-04-15 game night" src="posters/2022-04-15.png" />
 </td>
-</tr>
-<tr>
 <td>
 <img alt="Poster for posters/2022-03-25 game night" src="posters/2022-03-25.png" />
 </td>
@@ -46,11 +49,11 @@ Game Night Poster
 <td>
 <img alt="Poster for posters/2022-02-18 game night" src="posters/2022-02-18.png" />
 </td>
+</tr>
+<tr>
 <td>
 <img alt="Poster for posters/2022-02-04 game night" src="posters/2022-02-04.png" />
 </td>
-</tr>
-<tr>
 <td>
 <img alt="Poster for posters/2022-01-21 game night" src="posters/2022-01-21.png" />
 </td>
@@ -60,11 +63,11 @@ Game Night Poster
 <td>
 <img alt="Poster for posters/2021-11-05 game night" src="posters/2021-11-05.png" />
 </td>
+</tr>
+<tr>
 <td>
 <img alt="Poster for posters/2021-10-16 game night" src="posters/2021-10-16.png" />
 </td>
-</tr>
-<tr>
 <td>
 <img alt="Poster for posters/2021-09-24 game night" src="posters/2021-09-24.png" />
 </td>
@@ -74,11 +77,11 @@ Game Night Poster
 <td>
 <img alt="Poster for posters/2021-09-10 game night" src="posters/2021-09-10.png" />
 </td>
+</tr>
+<tr>
 <td>
 <img alt="Poster for posters/2021-08-27 game night" src="posters/2021-08-27.png" />
 </td>
-</tr>
-<tr>
 <td>
 <img alt="Poster for posters/2021-08-06 game night" src="posters/2021-08-06.png" />
 </td>
