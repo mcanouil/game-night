@@ -15,13 +15,20 @@ execute:
 <!-- badges: end -->
 
 ```{r}
-posters <- sort(
-  x = list.files(
-    path = "posters",
+posters <- c(
+  list.files(
+    path = "contents",
     pattern = "\\.png$",
     full.names = TRUE
   ),
-  decreasing = TRUE
+  sort(
+    x = list.files(
+      path = "posters",
+      pattern = "\\.png$",
+      full.names = TRUE
+    ),
+    decreasing = TRUE
+  )
 )
 
 cell <- sprintf(
