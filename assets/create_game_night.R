@@ -32,7 +32,14 @@ create_game_night <- function(
   # "/Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser"
   message(sprintf("Running %s", basename(output)))
   if (!all(dir.exists(c("posters", "contents")))) {
-    dir.create(c("posters", "contents"), showWarnings = FALSE, mode = "0755")
+    invisible(
+      lapply(
+        X = c("posters", "contents"),
+        FUN = dir.create,
+        showWarnings = FALSE,
+        mode = "0755"
+      )
+    )
   }
   callr::r(
     func = function(input, output, chrome_path) {
