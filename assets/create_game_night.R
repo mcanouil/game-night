@@ -53,12 +53,11 @@ create_game_night <- function(
       mode = "0775"
     )
 
-    xaringan_poster <- rmarkdown::render(
+    html_poster <- quarto::quarto_render(
       input = input,
       output_dir = tempdir(),
       encoding = "UTF-8",
-      params = rmd_params,
-      output_yaml = output_yaml,
+      execute_params = rmd_params,
       quiet = TRUE
     )
     output_pngs <- sapply(
