@@ -23,19 +23,19 @@ params:
 
 ## Salutations {background-image="background.jpg"}
 
-Salutations à vous, vous qui vous êtes égaré-e-s ici et pas ailleurs !
+Salutations à vous, vous qui vous êtes égaré-e-s ici et pas ailleurs&nbsp;!
 
 :::: {.columns}
 
-::: {.column width="20%"}
+::: {.column width="40%"}
 
-<img src = "https://github.com/mcanouil.png" height = "175px" class = "picture" />
+![](https://github.com/mcanouil.png){.picture fig-align="center" width="75%"}
 
 :::
 
-::: {.column width="80%"}
+::: {.column width="60%"}
 
-Il est important de noter et de rappeler que le __monde se divise en deux__^[L'un de ces groupes a de la chance.] :
+Il est important de noter et de rappeler que le __monde se divise en deux__^[L'un de ces groupes a de la chance.]&nbsp;:
 
 - celles et ceux qui __me connaissent__.
 
@@ -49,7 +49,8 @@ Il est important de noter et de rappeler que le __monde se divise en deux__^[L'u
 
 Entrons dans le cœur de cet événement, en commençant par les choses importantes.
 
-L'idée est de réunir plusieurs personnes (dans un maximum de huit) autour d'un « __potluck__ », pour reprendre le terme anglais d'Amérique du Nord (*c.-à-d.*, en bon français un « __repas-partagé__ »), et ce, __chez moi dans le secteur du Vieux-Lille__^[L'adresse sera communiquée aux participants par message privé (ou méthode similaire) 45 minutes avant. Aucune autre communication par ce support ne sera réalisée par l'oganisateur.] (__Rue Esquermoise / Royale__) de __19 h 30__ à XX h XX.
+L'idée est de réunir plusieurs personnes (dans un maximum de huit) autour d'un « __potluck__ », pour reprendre le terme anglais d'Amérique du Nord (*c.-à-d.*, en bon français un « __repas-partagé__ »), et ce, __chez moi dans le secteur du Vieux-Lille__^[L'adresse sera communiquée aux participants par message privé (ou méthode similaire) 45 minutes avant.
+Aucune autre communication par ce support ne sera réalisée par l'oganisateur.] (__Rue Esquermoise / Royale__) de __19 h 30__ à XX h XX.
 
 Dès lors que le stock de victuailles aura atteint une quantité nécessaire et suffisante, il nous sera alors possible de partir dans __une (ou plusieurs) « aventure(s) » d'environ 30-45 minutes selon le jeu__.
 
