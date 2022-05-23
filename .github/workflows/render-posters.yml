@@ -35,7 +35,7 @@ jobs:
           if (length(events_to_create) > 0) {
             invisible(sapply(events_to_create, create_game_night))
           }
-          quarto::quarto_render("README.qmd")
+          quarto::quarto_render("README.qmd", quiet = TRUE)
 
       - name: Commit results
         run: |
