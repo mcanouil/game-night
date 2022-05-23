@@ -3,13 +3,12 @@
 on:
   workflow_dispatch:
   push:
-    branches: main
-    paths: "R/**"
+    paths: events.txt
 
-name: render-posters
+name: Build
 
 jobs:
-  render-posters:
+  build:
     runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
