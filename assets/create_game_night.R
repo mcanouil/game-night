@@ -43,7 +43,7 @@ create_game_night <- function(
   }
   callr::r(
     func = function(input, output, chrome_path) {
-      Sys.setenv(CHROMOTE_CHROME = chrome_path)
+      if (!is.null(chrome_path)) Sys.setenv(CHROMOTE_CHROME = chrome_path)
       on.exit(unlink(sub("\\.qmd$", ".html", input)))
       cap <- function(string) {
         string <- strsplit(string, " ")[[1]]

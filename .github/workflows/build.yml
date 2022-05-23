@@ -5,6 +5,7 @@ on:
     paths: 
       - events.txt
       - .github/workflows/build.yml
+      - assets/*
   workflow_dispatch:
 
 name: Build
