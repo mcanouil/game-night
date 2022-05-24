@@ -6,6 +6,7 @@ on:
       - events.txt
       - .github/workflows/build.yml
       - assets/*
+      - README.qmd
   workflow_dispatch:
 
 name: Build
