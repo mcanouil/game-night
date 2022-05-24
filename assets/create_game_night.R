@@ -63,7 +63,7 @@ create_game_night <- function(
           ) + 1,
           date = paste(
             c(
-              cap(format(as.Date(sub("\\.png$", "", basename(output))), "%A %d %b %Y")),
+              cap(format(as.Date(sub("\\.png$", "", basename(output))), "%A %d %B %Y")),
               "à 19 h 30"
             ),
             collapse = " "
