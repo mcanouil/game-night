@@ -79,5 +79,5 @@ Aucune autre communication par ce support ne sera réalisée par l'oganisateur.
 
 ----------------------------------------
 
-Contenu/Images sous licence CC-BY-4.0
+Contenu/Images sous licence CC-BY-SA-4.0
 ```
