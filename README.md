@@ -11,6 +11,9 @@ Game Night Poster
 <table>
 <tr>
 <td>
+<img alt="Poster for posters/2022-06-03 game night" src="posters/2022-06-03.png" />
+</td>
+<td>
 <img alt="Poster for contents/contents-01 game night" src="contents/contents-01.png" />
 </td>
 <td>
@@ -21,9 +24,6 @@ Game Night Poster
 </td>
 <td>
 <img alt="Poster for contents/contents-04 game night" src="contents/contents-04.png" />
-</td>
-<td>
-<img alt="Poster for posters/2022-06-03 game night" src="posters/2022-06-03.png" />
 </td>
 </tr>
 </table>
