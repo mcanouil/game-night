@@ -1,0 +1,114 @@
+---
+title: 'Game Night Poster <img src="https://raw.githubusercontent.com/mcanouil/hex-stickers/main/SVG/mcsb.svg" align="right" width="60" />'
+format: gfm
+execute:
+  echo: false
+  warning: false
+  error: false
+  output: asis
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+<!-- badges: start -->
+[![License](https://img.shields.io/github/license/mcanouil/game-night)](LICENSE)
+<!-- badges: end -->
+
+```{r}
+posters <- c(
+  sort(
+    x = list.files(
+      path = "posters",
+      pattern = "\\.png$",
+      full.names = TRUE
+    ),
+    decreasing = TRUE
+  )[[1]],
+  list.files(
+    path = "contents",
+    pattern = "\\.png$",
+    full.names = TRUE
+  )
+)
+
+cell <- sprintf(
+  '<td><img alt="Poster for %s game night" src="%s" /></td>',
+  sub("\\.png$", "", posters), posters
+)
+
+cols <- 5
+rows <- ceiling(length(cell) / cols)
+
+row_id <- rep(seq_len(rows), each = cols, length.out = length(cell))
+row_cells <- split(cell, row_id)
+
+cat(sprintf("## [Jeux] Game Night #%s (MC)\n", length(readLines("events.txt"))))
+cat("<table>\n")
+cat(paste0("<tr>", sapply(row_cells, paste, collapse = ""), "</tr>"), sep = "")
+cat("</table>\n")
+```
+
+```
+Limité à 5/6/7 personnes (organisateur inclus).
+
+Validation des inscriptions ("Participe" = engagement), par ordre d'arrivée sur un groupe Messenger dédié, 24 heures avant.
+
+Note : j'ai un jeune chien gentil, mais très social ^^
+
+----------------------------------------
+
+Salutations à vous, vous qui vous êtes égaré-e-s ici et pas ailleurs !
+
+Il est important de noter et de rappeler que le monde se divise en deux* :
+- celles et ceux qui me connaissent.
+- celles et ceux qui ne me connaissent pas.
+
+* L'un de ces groupes a de la chance.
+
+Maintenant que ce rappel est fait, entrons dans le cœur de cet événement.
+
+Commençons par les choses importantes, l'idée est de réunir plusieurs personnes (dans un maximum de huit) autour d'un « potluck », pour reprendre le terme anglais d'Amérique du Nord (c.-à-d., en bon français un « repas-partagé »), et ce, chez moi dans le secteur du Vieux-Lille* (Rue Esquermoise / Royale) de 19 h 30 à XX h XX.
+
+Dès lors que le stock de victuailles aura atteint une quantité nécessaire et suffisante, il nous sera alors possible de partir dans une (ou plusieurs) « aventure(s) » d'environ 30-45 minutes selon le jeu.
+
+* L'adresse sera communiquée aux participants par message privé (ou méthode similaire) 45-60 minutes avant.
+Aucune autre communication par ce support ne sera réalisée par l'oganisateur.
+
+#jeuxdesociété #boardgames
+
+----------------------------------------
+
+Contenu/Images sous licence CC-BY-SA-4.0
+```
+
+<details><summary>Voir toutes les affiches.</summary>
+
+```{r}
+posters <- c(
+  sort(
+    x = list.files(
+      path = "posters",
+      pattern = "\\.png$",
+      full.names = TRUE
+    ),
+    decreasing = TRUE
+  )
+)
+
+cell <- sprintf(
+  '<td><img alt="Poster for %s game night" src="%s" /></td>',
+  sub("\\.png$", "", posters), posters
+)
+
+cols <- 4
+rows <- ceiling(length(cell) / cols)
+
+row_id <- rep(seq_len(rows), each = cols, length.out = length(cell))
+row_cells <- split(cell, row_id)
+
+cat("<table>\n")
+cat(paste0("<tr>", sapply(row_cells, paste, collapse = ""), "</tr>"), sep = "")
+cat("</table>\n")
+```
+
+</details>
