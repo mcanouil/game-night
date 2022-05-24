@@ -16,11 +16,6 @@ execute:
 
 ```{r}
 posters <- c(
-  list.files(
-    path = "contents",
-    pattern = "\\.png$",
-    full.names = TRUE
-  ),
   sort(
     x = list.files(
       path = "posters",
@@ -28,7 +23,12 @@ posters <- c(
       full.names = TRUE
     ),
     decreasing = TRUE
-  )[[1]]
+  )[[1]],
+  list.files(
+    path = "contents",
+    pattern = "\\.png$",
+    full.names = TRUE
+  )
 )
 
 cell <- sprintf(
