@@ -28,6 +28,36 @@ posters <- c(
       full.names = TRUE
     ),
     decreasing = TRUE
+  )[[1]]
+)
+
+cell <- sprintf(
+  '<td><img alt="Poster for %s game night" src="%s" /></td>',
+  sub("\\.png$", "", posters), posters
+)
+
+cols <- 5
+rows <- ceiling(length(cell) / cols)
+
+row_id <- rep(seq_len(rows), each = cols, length.out = length(cell))
+row_cells <- split(cell, row_id)
+
+cat("<table>\n")
+cat(paste0("<tr>", sapply(row_cells, paste, collapse = ""), "</tr>"), sep = "")
+cat("</table>\n")
+```
+
+<details><summary>Voir toutes les affiches.</summary>
+
+```{r}
+posters <- c(
+  sort(
+    x = list.files(
+      path = "posters",
+      pattern = "\\.png$",
+      full.names = TRUE
+    ),
+    decreasing = TRUE
   )
 )
 
@@ -46,6 +76,8 @@ cat("<table>\n")
 cat(paste0("<tr>", sapply(row_cells, paste, collapse = ""), "</tr>"), sep = "")
 cat("</table>\n")
 ```
+
+</details>
 
 ```
 [Jeux] Game Night # (MC)
