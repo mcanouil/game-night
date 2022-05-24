@@ -120,4 +120,4 @@ Game Night Poster
 
     ----------------------------------------
 
-    Contenu/Images sous licence CC-BY-4.0
+    Contenu/Images sous licence CC-BY-SA-4.0
