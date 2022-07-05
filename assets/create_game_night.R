@@ -52,7 +52,7 @@ create_game_night <- function(
         return(string)
       }
       Sys.setlocale("LC_TIME", "fr_FR.UTF-8")
-      html_poster <- quarto::quarto_render(
+      quarto::quarto_render(
         input = input,
         execute_params = list(
           number = sum(
